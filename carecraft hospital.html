@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareCraft Hospital - Healthcare Excellence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e88e5;
+            --pink: #97027d;
+            --primary-dark: #1565c0;
+            --secondary: #26a69a;
+            --light: #f5f5f5;
+            --dark: #333333;
+            --danger: #e53935;
+            --success: #43a047;
+            --gray: #757575;
+            --light-gray: #eeeeee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Emergency Contact Bar */
+        .contact-info {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .contact-info .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+        }
+
+        .contact-info .emergency {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info .social-icons a {
+            color: white;
+            margin-left: 15px;
+            font-size: 16px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .logo2 {
+            height: 80px;
+        }
+
+        .nabh-logo {
+            height: 40px;
+            margin-left: 15px;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar a {
+            color: var(--dark);
+            font-weight: 500;
+            text-transform: capitalize;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--pink);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--pink);
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-buttons button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .login-btn {
+            color: white;
+            border: 1px solid var(--pink) !important;
+            background-color: var(--pink) !important;
+        }
+
+        .login-btn:hover {
+            background-color: var(--dark) !important;
+            color: white;
+        }
+
+        .register-btn {
+            background-color: var(--pink) !important;
+            color: white;
+        }
+
+        .register-btn:hover {
+            background-color: var(--dark) !important;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10%;
+        }
+
+        .slide-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .slider-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            color: white;
+            font-size: 24px;
+        }
+
+        .slider-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .prev-arrow {
+            left: 20px;
+        }
+
+        .next-arrow {
+            right: 20px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .section-title .title-line {
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            height: 120px;
+            background-color: var(--light-gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-link {
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .service-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-content p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+
+
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+
+        .modal-active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 90%;
+            overflow: hidden;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-link {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .form-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--primary);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--gray);
+        }
+
+        /* Radio button group */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar {
+                gap: 15px;
+            }
+
+            .slide-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+
+            .about-image {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-info .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .auth-buttons {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+            }
+
+            .navbar.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-slider {
+                height: 450px;
+            }
+
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+
+            .slide-content p {
+                font-size: 1rem;
+            }
+
+            .stats-container {
+                flex-wrap: wrap;
+            }
+
+            .stat {
+                flex: 1;
+                min-width: calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                height: 50px;
+            }
+
+            .nabh-logo {
+                height: 30px;
+            }
+
+            .hero-slider {
+                height: 350px;
+            }
+
+            .slide-content {
+                padding-left: 5%;
+            }
+
+            .slide-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .slide-content p {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Emergency Contact Bar -->
+    <!-- Emergency Contact Bar -->
+    <div class="contact-info">
+        <div class="container-contact">
+            <div class="emergency">
+
+                <span><i class="ri-phone-fill"></i>Emergency & Appointment Call: 9497072222, 0479-2962222,
+                    2411220</span>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Base styles */
+        .contact-info {
+            background-color: #333333;
+            padding: 10px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container-contact {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emergency {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .emergency i {
+            color: #dc3545;
+            font-size: 18px;
+        }
+
+        .emergency span {
+            font-size: 14px;
+        }
+
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .container-contact {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .social-icons {
+                display: none;
+                /* Hide social icons on small screens */
+
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .emergency span {
+                font-size: 15px;
+            }
+
+            .social-icons {
+                gap: 10px;
+            }
+
+            .social-icons a {
+                width: 25px;
+                height: 25px;
+                font-size: 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .emergency {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .emergency span {
+                line-height: 1.4;
+            }
+        }
+    </style>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="./carecraft hospital_files/carelogo.png" alt="CareCraft Hospital" class="logo">
+                <img src="./carecraft hospital_files/nabhlogo.png" alt="NABH Accredited" class="nabh-logo">
+            </div>
+
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="navbar" id="navbar">
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="department.html">Departments</a>
+                <a href="services.html">Services & Facilities</a>
+                <a href="review.html">Testimonials</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+
+            <div class="auth-buttons">
+                <button class="login-btn" id="login-btn">
+                    <i class="fas fa-user"></i> Login
+                </button>
+                <button class="register-btn" id="register-btn">
+                    <i class="fas fa-user-plus"></i> Register
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+        <div class="slider-wrapper" id="slider-wrapper">
+            <div class="slide">
+                <img src="./carecraft hospital_files/care.jpeg" alt="Hospital Building">iv>
+            </div>
+            <div class="slide">
+                <img src="./carecraft hospital_files/img2.jpeg" alt="Medical Service">
+
+            </div>
+            <div class="slide">
+                <img src="./carecraft hospital_files/img1.jpeg" alt="Modern Equipment">
+
+            </div>
+            <div class="slide">
+                <img src="./carecraft hospital_files/img3.jpeg" alt="Patient Care">
+            </div>
+        </div>
+
+        <div class="slider-arrow prev-arrow" id="prev-slide">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="slider-arrow next-arrow" id="next-slide">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+
+        <div class="slider-controls" id="slider-dots">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <span class="title-line"></span>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="carecraft hospital_files/cardiology.png" alt="Cardiology Services">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Cardiology</h3>
+                        <p>Complete cardiac care with advanced diagnostic and treatment facilities. Our expert
+                            cardiologists provide compassionate care.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="carecraft hospital_files/neurology.png" alt="Neurology Services">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Neurology</h3>
+                        <p>Comprehensive neurological services with cutting-edge technology for diagnosis and treatment
+                            of brain and nervous system disorders.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="carecraft hospital_files/ortho.jpg" alt="Orthopedics Services">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Orthopedics</h3>
+                        <p>Specialized care for bone and joint problems with advanced surgical and non-surgical
+                            treatment options.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="carecraft hospital_files/uro.jpg" alt="General Medicine Services">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Urology</h3>
+                        <p>Comprehensive healthcare for adults including preventive care, diagnosis and treatment of
+                            acute and chronic illnesses.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="carecraft hospital_files/ent.png" alt="Pediatrics Services">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fa-solid fa-ear-listen"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>ENT</h3>
+                        <p>Specialized healthcare for infants, children and adolescents with focus on growth,
+                            development and childhood illnesses.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="carecraft hospital_files/derm.jpg" alt="Surgery Services">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Dermatology</h3>
+                        <p>State-of-the-art surgical facilities with experienced surgeons performing a wide range of
+                            surgical procedures.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Add this to your existing CSS file */
+
+        .service-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 15px;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* Optional hover effect */
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        /* Adjust existing service card styling to accommodate images */
+        .service-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Adjust icon positioning if keeping both images and icons */
+        .service-icon {
+            margin-top: -30px;
+            position: relative;
+            z-index: 1;
+            background-color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="carecraft hospital_files/image.png" style="height: 500px;" width="400px"
+                        alt="About CareCraft Hospital">
+                </div>
+                <div class="about-content">
+                    <h2>About CareCraft Hospital</h2>
+                    <p>CareCraft Hospital is a leading healthcare provider in Kerala, dedicated to delivering
+                        exceptional medical care with compassion and expertise. Established with a vision to provide
+                        accessible, affordable, and quality healthcare services, we have grown to become one of the most
+                        trusted hospitals in the region.</p>
+                    <p>Our state-of-the-art facilities, coupled with a team of highly skilled medical professionals,
+                        ensure that patients receive the best possible care. We are committed to continuous improvement
+                        and innovation in healthcare delivery.</p>
+
+                    <div class="stats-container">
+                        <div class="stat">
+                            <div class="stat-value">50+</div>
+                            <div class="stat-label">Specialized Doctors</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">20+</div>
+                            <div class="stat-label">Departments</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">15k+</div>
+                            <div class="stat-label">Happy Patients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-image: url('carecraft\ hospital_files/image.png'); background-size: cover; background-position: center; position: relative; margin-top: 90px;">
+        <!-- Dark overlay for the background image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.85); z-index: 0;"></div>
+    
+        <div class="container" style="position: relative; z-index: 1; color: #ffffff; padding: 50px 15px;">
+
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="logo-container">
+                        <img src="./carecraft hospital_files/carelogo.png" alt="CareCraft Hospital" class="logo2">
+                    </div>
+                    <ul class="footer-links contact-info-footer " style="margin-top: 2rem;">
+                        <li><a href="#" class="footer-link"><i class="fas fa-map-marker-alt"></i> CareCraft Hospital,
+                                Kumarapuram PO,
+                                Danapady, Haripad, Alappuzha 690548, Kerala</a></li>
+                        <li><a href="tel:9497072222" class="footer-link"><i class="fas fa-phone"></i> 9497072222,
+                                0479-2962222</a></li>
+                        <li><a href="mailto:carecrafthospital@gmail.com" class="footer-link"><i
+                                    class="fas fa-envelope"></i>
+                                carecrafthospital@gmail.com</a></li>
+                    </ul>
+                    
+                    <!-- Social Media Icons -->
+                    <div class="social-icons" style="margin-top: 1.5rem; display: flex;">
+                        <a href="#" class="social-icon-square">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon-square">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon-square">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon-square">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <style>
+                .social-icon-square {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 38px;
+                    height: 38px;
+                    margin-right: 10px;
+                    background-color: #000;
+                    border: 1px solid #fff;
+                    border-radius: 9px;
+                    color: #fff;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                }
+                
+                .social-icon-square:hover {
+                    background-color: #97027d;
+                    transition: all 0.3s ease;
+
+                }
+                
+                .social-icon-square i {
+                    font-size: 18px;
+                }
+                </style>
+
+                <div class="footer-col">
+                    <h2 style="color: #f39c12; margin-bottom: 2rem;">Quick Links</h2>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"
+                                    style="margin-right: 6px;"></i> Home</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"
+                                    style="margin-right: 6px;"></i> About Us</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"
+                                    style="margin-right: 6px;"></i> Departments</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"
+                                    style="margin-right: 6px;"></i> Services & Facilities</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"
+                                    style="margin-right: 6px;"></i> Testimonials</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"
+                                    style="margin-right: 6px;"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h2 style="color: #f39c12; margin-bottom: 2rem;">Our Services</h2>
+                    <div style="width: 100%; height: 200px;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.7228788725242!2d76.4393518!3d9.2844675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b089f85c1083bab%3A0x8f83b1bbb08582b1!2sCarecraft%20Hospital!5e1!3m2!1sen!2sin!4v1743780959720!5m2!1sen!2sin"
+                            width="100%" height="240" style="border:0; border-radius: 10px; " allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+
+            </div>
+    
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin-top: 30px; padding-top: 20px; text-align: center;">
+                <p>&copy; 2025 CareCraft Hospital. All Rights Reserved. Designed by <span style="color: #f39c12;">Hostlane Technolab</span></p>
+            </div>
+        </div>
+    </footer>
+
+<style>
+    /* Existing footer styles with improvements */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding: 0 15px; /* Add padding to container */
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-link {
+    text-decoration: none !important;
+    color: #ffffff !important;
+    transition: color 0.3s;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: #67c3b7 !important;
+}
+
+.footer-social .btn {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+    transition: all 0.3s;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.footer-social .btn:hover {
+    background-color: #f39c12 !important;
+    border-color: #f39c12 !important;
+    color: #021526 !important;
+}
+
+.contact-info-footer li a {
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-info-footer li i {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+/* Improved responsive styles */
+@media (max-width: 992px) {
+    .footer-col {
+        flex: 0 0 calc(50% - 20px);
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+    
+    .footer-container {
+        padding: 0;
+    }
+    
+    .footer-col {
+        flex: 0 0 100%;
+        margin-right: 0;
+    }
+    
+    /* Make map responsive */
+    .footer-col iframe {
+        height: 180px;
+    }
+    
+    /* Adjust vertical spacing */
+    footer .container {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
+    .footer-bottom {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-links li a {
+        font-size: 14px;
+    }
+    
+    /* More compact spacing */
+    .footer-col {
+        margin-bottom: 20px;
+    }
+    
+    h2 {
+        margin-bottom: 1rem !important;
+    }
+}
+</style>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to Your Account</h3>
+                <button class="modal-close" id="close-login"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <input type="text" id="username" class="form-control" placeholder="Enter your username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Remember me</label>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <div class="form-footer">
+                        <p>Don't have an account? <a href="#" class="form-link" id="show-register">Register</a></p>
+                        <p><a href="#" class="form-link">Forgot Password?</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create an Account</h3>
+                <button class="modal-close" id="close-register"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Phone Number</label>
+                        <input type="tel" id="mobile" class="form-control" placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" class="form-control" placeholder="Create a password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" class="form-control"
+                            placeholder="Confirm your password">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="male" name="gender" value="male">
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="other" name="gender" value="other">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" class="form-link" id="show-login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navbar = document.getElementById('navbar');
+
+        mobileToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+
+        // Modal functionality
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const loginModal = document.getElementById('login-modal');
+        const registerModal = document.getElementById('register-modal');
+        const closeLogin = document.getElementById('close-login');
+        const closeRegister = document.getElementById('close-register');
+        const showRegister = document.getElementById('show-register');
+        const showLogin = document.getElementById('show-login');
+
+        loginBtn.addEventListener('click', () => {
+            loginModal.classList.add('modal-active');
+        });
+
+        registerBtn.addEventListener('click', () => {
+            registerModal.classList.add('modal-active');
+        });
+
+        closeLogin.addEventListener('click', () => {
+            loginModal.classList.remove('modal-active');
+        });
+
+        closeRegister.addEventListener('click', () => {
+            registerModal.classList.remove('modal-active');
+        });
+
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.classList.remove('modal-active');
+            setTimeout(() => {
+                registerModal.classList.add('modal-active');
+            }, 300);
+        });
+
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerModal.classList.remove('modal-active');
+            setTimeout(() => {
+                loginModal.classList.add('modal-active');
+            }, 300);
+        });
+
+        // Hero Slider Functionality
+        const sliderWrapper = document.getElementById('slider-wrapper');
+        const slides = sliderWrapper.children;
+        const dotsContainer = document.getElementById('slider-dots');
+        const dots = dotsContainer.children;
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+
+        let currentSlide = 0;
+        const slideWidth = 100; // percentage
+        const totalSlides = slides.length;
+
+        // Set initial position
+        sliderWrapper.style.transform = `translateX(0%)`;
+
+        // Function to set active slide
+        function goToSlide(index) {
+            if (index < 0) {
+                index = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                index = 0;
+            }
+
+            currentSlide = index;
+            sliderWrapper.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+
+            // Update dots
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Event listeners for controls
+        prevBtn.addEventListener('click', () => {
+            goToSlide(currentSlide - 1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            goToSlide(currentSlide + 1);
+        });
+
+        // Add event listeners to dots
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].addEventListener('click', () => {
+                goToSlide(i);
+            });
+        }
+
+        // Auto slide
+        let slideInterval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 5000);
+
+        // Reset interval on manual navigation
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                goToSlide(currentSlide + 1);
+            }, 5000);
+        }
+
+        prevBtn.addEventListener('click', resetInterval);
+        nextBtn.addEventListener('click', resetInterval);
+        dotsContainer.addEventListener('click', resetInterval);
+
+        // Form validation (basic example)
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add form validation logic here
+            alert('Login form submitted!');
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add form validation logic here
+            alert('Registration form submitted!');
+        });
+    </script>
+</body>
+
+</html>
